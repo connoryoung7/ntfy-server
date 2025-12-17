@@ -25,11 +25,19 @@ services:
 
       # Access control (optional, see notes below)
       NTFY_AUTH_DEFAULT_ACCESS: deny
+      NTFY_AUTH_FILE: /var/lib/ntfy/user.db
       NTFY_ENABLE_LOGIN: true
+      NTFY_ENABLE_SIGNUP: false
 
       # Rate limiting (recommended)
       NTFY_VISITOR_REQUEST_LIMIT_BURST: 20
       NTFY_VISITOR_REQUEST_LIMIT_REPLENISH: 5s
+    
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.monitoring-services-ntfy-server.rule=Host(`test.connoryoung.dev`)
+      - traefik.http.routers.monitoring-services-ntfy-server.entrypoints=web
+      - traefik.http.services.monitoring-services-ntfy-server.loadbalancer.server.port=2586
 
     ports:
       - 2586:2586
