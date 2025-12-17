@@ -28,6 +28,8 @@ services:
       NTFY_AUTH_FILE: /var/lib/ntfy/user.db
       NTFY_ENABLE_LOGIN: true
       NTFY_ENABLE_SIGNUP: false
+      NTFY_REQUIRE_LOGIN: true
+	
 
       # Rate limiting (recommended)
       NTFY_VISITOR_REQUEST_LIMIT_BURST: 20
