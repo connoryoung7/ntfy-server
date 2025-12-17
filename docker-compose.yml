@@ -24,7 +24,7 @@ services:
       NTFY_LOG_LEVEL: info
 
       # Access control (optional, see notes below)
-      NTFY_AUTH_DEFAULT_ACCESS: deny
+      NTFY_AUTH_DEFAULT_ACCESS: deny-all
       NTFY_AUTH_FILE: /var/lib/ntfy/user.db
       NTFY_ENABLE_LOGIN: true
       NTFY_ENABLE_SIGNUP: false
