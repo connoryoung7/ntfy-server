@@ -10,12 +10,11 @@ services:
 
     environment:
       # Server
-      NTFY_BASE_URL: https://ntfy.connoryoung.dev
+      NTFY_BASE_URL: https://test.connoryoung.dev
       NTFY_LISTEN_HTTP: :2586
       NFTY_BEHIND_PROXY: true
 
       # Data & cache
-      NTFY_CACHE_FILE: /var/lib/ntfy/cache.db
       NTFY_CACHE_DURATION: 12h
       NTFY_ATTACHMENT_CACHE_DIR: /var/lib/ntfy/attachments
       NTFY_ATTACHMENT_TOTAL_SIZE_LIMIT: 5G
@@ -33,5 +32,4 @@ services:
       NTFY_VISITOR_REQUEST_LIMIT_REPLENISH: 5s
 
     volumes:
-      - /var/cache/ntfy:/var/cache/ntfy
-      - /etc/ntfy:/etc/ntfy
+      - ./:/var/lib/ntfy
