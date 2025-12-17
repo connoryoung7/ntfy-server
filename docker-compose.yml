@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  ntfy:
+    image: binwiederhier/ntfy:latest
+    container_name: ntfy
+    restart: unless-stopped
+
+    command: serve
+
+    environment:
+      # Server
+      NTFY_LISTEN_HTTP: :2586
+      NFTY_BEHIND_PROXY: true
+
+      # Data & cache
+      NTFY_CACHE_FILE: /var/lib/ntfy/cache.db
+      NTFY_CACHE_DURATION: 12h
+      NTFY_ATTACHMENT_CACHE_DIR: /var/lib/ntfy/attachments
+      NTFY_ATTACHMENT_TOTAL_SIZE_LIMIT: 5G
+      NTFY_ATTACHMENT_FILE_SIZE_LIMIT: 50M
+
+      # Logging
+      NTFY_LOG_LEVEL: info
+
+      # Access control (optional, see notes below)
+      NTFY_AUTH_DEFAULT_ACCESS: deny
+      NTFY_ENABLE_LOGIN: true
+
+      # Rate limiting (recommended)
+      NTFY_VISITOR_REQUEST_LIMIT_BURST: 20
+      NTFY_VISITOR_REQUEST_LIMIT_REPLENISH: 5s
+
+    volumes:
+      - /var/cache/ntfy:/var/cache/ntfy
+      - /etc/ntfy:/etc/ntfy
