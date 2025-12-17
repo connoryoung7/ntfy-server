@@ -31,5 +31,8 @@ services:
       NTFY_VISITOR_REQUEST_LIMIT_BURST: 20
       NTFY_VISITOR_REQUEST_LIMIT_REPLENISH: 5s
 
+    ports:
+      - 2586:2586
+
     volumes:
       - ./:/var/lib/ntfy
